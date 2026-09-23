@@ -34,3 +34,25 @@ function resolverValor(valorNuevo: string, valorViejo: string): string { //pregu
         return valorNuevo;
     }
 }
+
+function buscarID(Tareas: Tarea[], aux: number, idsMostrados: number[]): Tarea | undefined {
+    let esValido: boolean = false;
+    let tareaEncontrada: Tarea | undefined;
+    for (let i: number = 0; i < idsMostrados.length; i++) {
+        if (idsMostrados[i] === aux) {
+            esValido = true;
+        }
+    }
+    if (!esValido) {
+        return undefined;
+    } else {
+        for (let i: number = 0; i < Tareas.length; i++) {
+            if (Tareas[i].ID === aux) {
+                tareaEncontrada = Tareas[i];
+                break;
+            }
+        }
+    }
+
+    return tareaEncontrada;
+}
