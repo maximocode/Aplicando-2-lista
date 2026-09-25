@@ -1,5 +1,5 @@
 
-type Tarea = {
+export type Tarea = {
     ID: number;
     Titulo: string;
     Descripcion: string;
@@ -56,3 +56,5 @@ function buscarID(Tareas: Tarea[], aux: number, idsMostrados: number[]): Tarea |
 
     return tareaEncontrada;
 }
+
+module.exports = { Tareas, crearTarea, resolverValor, buscarID };
