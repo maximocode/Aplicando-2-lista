@@ -1,2 +1,4 @@
-console.log("");
-//no te olvides del git y gitignore
+const { iniciarApp } = require("./controlador/tareas.js");
+
+console.log("Buenos días!! Bienvenido a la aplicación de Tareas");
+iniciarApp();
