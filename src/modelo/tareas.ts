@@ -3,16 +3,17 @@ export type Tarea = {
     ID: number;
     Titulo: string;
     Descripcion: string;
-    Estado: "P" | "E" | "C";
+    Estado: Estado;
     Vencimiento: string;
     Creacion: string;
     Dificultad: number;
 };
 
+export type Estado = "P" | "E" | "C";
 let ID: number = 1;
 let Tareas: Tarea[] = [];
 
-function crearTarea(titulo: string, descripcion: string, dificultad: number, estado: "P" | "E" | "C", vencimiento: string): void {
+function crearTarea(titulo: string, descripcion: string, dificultad: number, estado: Estado, vencimiento: string): void {
     let nuevaTarea: Tarea = {
         ID:ID++,
         Titulo: titulo,
