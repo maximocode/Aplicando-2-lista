@@ -1,0 +1,15 @@
+# Ejercicio 1 - Análisis de TypeScript en el paradigma estructurado
+
+1. Generalización simbólica:
+   Las reglas escritas del lenguaje están definidas por la especificación de TypeScript, que extiende JavaScript con tipado estático. 
+   - Sintaxis: similar a JavaScript, con palabras reservadas (if, for, while, function), uso de llaves para bloques y punto y coma para sentencias.
+   - Tipado: permite declarar tipos explícitos (string, number, boolean, interfaces, clases).
+   - Semántica: la ejecución final ocurre en JavaScript, ya que TypeScript se transpila a JS.
+   Documentación oficial: disponible en el sitio de TypeScript y en la especificación ECMAScript (base de JavaScript).
+
+2. Creencias de los profesionales:
+   - Se considera que TypeScript es más seguro que JavaScript porque detecta errores en tiempo de compilación gracias al tipado estático.
+   - Mejora la mantenibilidad de proyectos grandes, ya que facilita la organización del código con clases, interfaces y módulos.
+   - Ofrece mejor soporte en IDEs (autocompletado, refactorización, detección de errores).
+   - Es compatible con todo el ecosistema JavaScript, lo que permite usar librerías y frameworks existentes sin perder flexibilidad.
+   - Se cree que acelera el desarrollo en equipos grandes porque reduce errores comunes y hace el código más predecible.
