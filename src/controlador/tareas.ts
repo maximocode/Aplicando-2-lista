@@ -1,5 +1,5 @@
 const prompt = require('prompt-sync')();
-const { Tareas, buscarID, resolverValor} = require("./modelo/tareas.js");
+const { Tareas, buscarID, resolverValor, crearTarea} = require("./modelo/tareas.js");
 import type { Tarea, Estado } from "../modelo/tareas";
 const { menuPrincipal, menuVerTareas, preguntarDetalle, mostrarDetalles} = require("./vista/tareas.js");
 
@@ -135,7 +135,23 @@ function editarTarea(tareaEncontrada: Tarea): void {
     console.log("Tarea editada correctamente: \n");
 }
 
+function agregarTarea(): void {
+    let titulo: string = prompt("Ingrese el título de la tarea: ");
+    let descripcion: string = prompt("Ingrese la descripción de la tarea: ");
+    let dificultad: number;
+    do{
+        console.log("Ingrese la dificultad de la tarea (1-3): \n");
+        dificultad = parseInt(prompt());
+    }while (Number.isNaN(dificultad) || dificultad < 1 || dificultad > 3);
+    let estado: Estado;
+    do{
+        console.log("Ingrese el estado de la tarea ([P]endiente, [E]n curso, [C]ompletada): \n");
+        estado = prompt() as Estado;
+    }while (estado !== "P" && estado !== "E" && estado !== "C");
+    let vencimiento: string = prompt("Ingrese la fecha de vencimiento de la tarea (dd/mm/aaaa): ");
 
+    crearTarea(titulo, descripcion, dificultad, estado, vencimiento);
+}
 
 
 module.exports = { iniciarApp };
