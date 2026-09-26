@@ -1,7 +1,7 @@
 const prompt = require('prompt-sync')();
-const { Tareas, buscarID, resolverValor, crearTarea} = require("./modelo/tareas.js");
+const { Tareas, buscarID, resolverValor, crearTarea} = require("../modelo/tareas.js");
 import type { Tarea, Estado } from "../modelo/tareas";
-const { menuPrincipal, menuVerTareas, preguntarDetalle, mostrarDetalles} = require("./vista/tareas.js");
+const { menuPrincipal, menuVerTareas, preguntarDetalle, mostrarDetalles} = require("../vista/tareas.js");
 
 function iniciarApp(): void {
     let op: number;
@@ -69,7 +69,7 @@ function mostrarPorEstado(Tareas: Tarea[], estado: Estado): number[] {
     let idsMostrados: number[] = [];
     for (let i: number = 0; i < Tareas.length; i++) {
         if (Tareas[i].Estado === estado) {
-            console.log(Tareas[i].Titulo);
+            console.log("[" + Tareas[i].ID + "]" + Tareas[i].Titulo + "\n");
             idsMostrados.push(Tareas[i].ID);
         }
     }
