@@ -153,5 +153,40 @@ function agregarTarea(): void {
     crearTarea(titulo, descripcion, dificultad, estado, vencimiento);
 }
 
+function buscarTarea(Tareas: Tarea[]): void {
+    const busqueda: string = prompt("Ingrese el título de la tarea que desea buscar: ");
+    let tareasEncontradas: Tarea[] = [];
+    let aux: number;
+    for (let i = 0; i < Tareas.length; i++) {
+        if (Tareas[i].Titulo.toLowerCase().indexOf(busqueda) !== -1) {
+            tareasEncontradas.push(Tareas[i]);
+        }
+    }
+    if (tareasEncontradas.length > 0) {
+        console.log("Se encontraron las siguientes tareas: \n");
+        let idsEncontrados: number[] = [];
+        for (let i = 0; i < tareasEncontradas.length; i++) {
+            console.log("[" + tareasEncontradas[i].ID + "] " + tareasEncontradas[i].Titulo + "\n");
+            idsEncontrados.push(tareasEncontradas[i].ID);
+        }
+        do{
+            preguntarDetalle();
+            aux = parseInt(prompt());
+        }while (aux !== 0 && aux > idsEncontrados.length);
+
+        if(aux !== 0){
+            let tareaEncontrada = buscarID(Tareas, aux, idsEncontrados);
+            if (tareaEncontrada !== undefined) {
+                Detalles(tareaEncontrada);
+            } else {
+                console.log("No se encontró la tarea.");
+            }
+        } else {
+            console.log("Saliendo...");
+        }
+    } else {
+        console.log("No se encontró ninguna tarea con ese título");
+    }
+}
 
 module.exports = { iniciarApp };
