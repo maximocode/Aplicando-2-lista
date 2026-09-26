@@ -39,3 +39,5 @@ function mostrarDetalles(tareaEncontrada: Tarea) {
         "Creación: " + tareaEncontrada.Creacion + "\n" +
         "Dificultad: " + tareaEncontrada.Dificultad + "\n");
 }
+
+module.exports = { menuVerTareas, preguntarDetalle, menuPrincipal, mostrarDetalles };
