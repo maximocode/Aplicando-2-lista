@@ -26,7 +26,7 @@ function crearTarea(titulo: string, descripcion: string, dificultad: number, est
     Tareas.push(nuevaTarea);
 }
 
-function resolverValor(valorNuevo: string, valorViejo: string): string { //preguntar si esta bien que devuelva un string
+function resolverValor<T>(valorNuevo: string, valorViejo: T): T | string { //preguntar si esta bien que devuelva un string
     if (valorNuevo === "") {
         return valorViejo;
     } else if (valorNuevo === " ") {

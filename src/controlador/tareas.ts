@@ -1,5 +1,5 @@
 const prompt = require('prompt-sync')();
-const { Tareas, buscarID} = require("./modelo/tareas.js");
+const { Tareas, buscarID, resolverValor} = require("./modelo/tareas.js");
 import type { Tarea, Estado } from "../modelo/tareas";
 const { menuPrincipal, menuVerTareas, preguntarDetalle, mostrarDetalles} = require("./vista/tareas.js");
 
@@ -105,6 +105,34 @@ function Detalles(tareaEncontrada: Tarea): void {
     if(aux2 === 1){
         editarTarea(tareaEncontrada);
     }
+}
+
+function editarTarea(tareaEncontrada: Tarea): void { 
+    console.log("Estas editando la tarea: " + tareaEncontrada.Titulo + "\n" +
+        "- Si desea mantener cualquier valor, simplemente deje en blanco. \n" +
+        "- Si quiere dejar en blanco un campo, escriba un espacio. \n");
+    let nuevoTitulo: string = prompt("Ingrese el nuevo título de la tarea: ");
+    tareaEncontrada.Titulo = resolverValor(nuevoTitulo, tareaEncontrada.Titulo) as string;
+    let nuevaDescripcion: string = prompt("Ingrese la nueva descripción de la tarea: ");
+    tareaEncontrada.Descripcion = resolverValor(nuevaDescripcion, tareaEncontrada.Descripcion) as string;
+
+    let nuevaDificultad: string;
+    do{
+        nuevaDificultad = prompt("Ingrese la nueva dificultad de la tarea (1-3): ");
+    }while (nuevaDificultad !== "" && nuevaDificultad !== " " && (nuevaDificultad < "1" || nuevaDificultad > "3"));
+    let dificultadResuelta = resolverValor(nuevaDificultad, String(tareaEncontrada.Dificultad));
+    tareaEncontrada.Dificultad = dificultadResuelta === "" ? tareaEncontrada.Dificultad : parseInt(dificultadResuelta);
+
+    let nuevoEstado: string;
+    do {
+      nuevoEstado = prompt("2. Estado ([P]/[E]/[C]): ");
+    } while (nuevoEstado !== "" && nuevoEstado !== " " && nuevoEstado !== "P" && nuevoEstado !== "E" && nuevoEstado !== "C");
+    tareaEncontrada.Estado = resolverValor(nuevoEstado, tareaEncontrada.Estado) as Estado;
+
+    let nuevaFechaVencimiento: string = prompt("Ingrese la nueva fecha de vencimiento de la tarea (dd/mm/aaaa): ");
+    tareaEncontrada.Vencimiento = resolverValor(nuevaFechaVencimiento, tareaEncontrada.Vencimiento) as string;
+
+    console.log("Tarea editada correctamente: \n");
 }
 
 
